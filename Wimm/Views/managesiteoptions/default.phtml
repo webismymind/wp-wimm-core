@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/bootstrap.min.css" />
+
+<?php
+?>
+
+<h1>Gérez les options du site</h1>
+<em>Les options du site sont des champs contenant des informations utiles pour votre site et placées à différents endroits lors de la création. </em><br /><br />
+
+<form method="post" action="">
+    <fieldset>
+        <legend>Vos options:</legend>
+        <?php
+        $count = 0;
+
+        foreach ($this->params->options as $o)
+        {
+            $count++;
+            ?>
+            <p>
+                <label style="display: inline-block; width: 300px;"for="manageoption_<?php echo $count ?>"><?php echo $o->getDescription(); ?>: </label>
+                <input size="150" type="text" name="manageoption_<?php echo $count; ?>" value="<?php echo $o->getValue(); ?>" />
+                <input type="hidden" name="manageoption_name_<?php echo $count; ?>" value="<?php echo $o->getName(); ?>" />
+
+            </p>
+            <?php
+        }
+        ?>
+    </fieldset>
+
+    <fieldset>
+        <legend>Actions:</legend>
+        <input type="hidden" name="rowCount" value="<?php echo $count; ?>" />
+        <input type="submit" class="btn btn-primary" value="Sauvegarder" />
+    </fieldset>
+
+
+
+</form>
+
+<br /><br /><strong>WIMM WP Framework v1.0</strong>
+

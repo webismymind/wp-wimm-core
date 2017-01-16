@@ -1,0 +1,135 @@
+<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/bootstrap.min.css" />
+
+<h1>Configurer les options du site</h1>
+<em>Les options de thème sont des variables accessibles depuis n'importe où dans le site. Exemple: une adresse e-mail dans le footer.<br />
+    Vous pouvez choisir ici quelles options l'utilisateur pourra compléter/modifier depuis son interface</em><br /><br />
+<form method="post" action="" class="form-inline">
+    <fieldset>
+
+        <legend>Liste des options</legend>
+
+        <div id="createdOptions">
+            <?php
+            if (isset($this->params->options))
+            {
+                $c = 0;
+                foreach ($this->params->options as $key => $value)
+                {
+                    $c++;
+                    ?>
+                    <div >
+                        <label class="control-label" id="option_name_label_<?php echo $c; ?>" for="option_name_<?php echo $c; ?>">Nom du champs</label>
+                        <input readonly value="<?php echo $key; ?>" type="text" class="field_form readOnly" id="option_name_<?php echo $c; ?>" name="option_name_<?php echo $c; ?>" placeholder="Name called in theme" />&nbsp;
+                        <label class="control-label" id="option_title_label_<?php echo $c; ?>" for="option_title_<?php echo $c; ?>">Intitulé du champs</label>
+                        <input size="120" value="<?php echo $value->getDescription(); ?>" type="text" class="field_form" id="option_title_<?php echo $c; ?>" name="option_title_<?php echo $c; ?>" placeholder="Label" />&nbsp;
+                        <input type="hidden" id="option_delete" name="option_delete_<?php echo $c; ?>" value="no" />
+                        <input type="button" id="delete-option" class="btn btn-danger delete-option" value="Supprimer" />
+                        <br /><br />
+                    </div>
+                    <?php
+                }
+            }
+            ?>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Ajouter une option</legend>
+        <div id="pattern-field">
+            <label class="control-label" id="option_name_label_" for="option_name_">Nom du champs</label>
+            <input type="text" class="field_form" id="option_name_" name="option_name_" placeholder="Name called in theme" />&nbsp;
+            <label class="control-label" id="option_title_label_" for="option_title_">Intitulé du champs</label>
+            <input size="120" type="text" class="field_form" id="option_title_" name="option_title_" placeholder="Label" />&nbsp;
+            <input type="hidden" id="option_delete" name="option_delete_" value="no" />
+            <input type="button" id="add-option" class="btn btn-info" value="Ajouter" />
+        </div>
+    </fieldset>
+
+    <br />
+    <fieldset>
+        <legend>Actions</legend>
+        <div class="control-group">
+            <div class="controls">
+                <input type="hidden" name="entryCount" id="entryCount" value="<?php echo $c; ?>"/>
+                <input type="submit" class="btn btn-primary" value="Sauvegarder" />
+            </div>
+
+        </div>
+    </fieldset>
+
+</form>
+
+
+
+<br /><br /><strong>WIMM WP Framework v1.0</strong>
+
+
+<?php
+if (isset($this->params->dump))
+{
+    var_dump($this->params->dump);
+}
+?>
+
+<script src="<?php echo get_template_directory_uri() ?>/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+
+    jQuery(function() {
+        var itemCount = parseInt(jQuery('#entryCount').attr('value'));
+
+        jQuery('.delete-option').bind('click', function() {
+            jQuery(this).parent().hide(500);
+            jQuery(this).parent().find('#option_delete').attr('value', 'yes');
+
+        });
+
+        for (var i = 0; i <= itemCount; i++)
+        {
+
+        }
+
+        jQuery('#add-option').bind('click', function() {
+
+            itemCount++;
+            var newItem = jQuery('#pattern-field').clone();
+
+            newItem.find('#add-option').attr('class', 'btn btn-danger');
+            newItem.find('#add-option').attr('value', 'Supprimer');
+            newItem.find('#add-option').attr('id', 'delete-option');
+            newItem.find('#delete-option').bind('click', function() {
+                jQuery(this).parent().hide(500);
+                jQuery(this).parent().find('#option_delete').attr('value', 'yes');
+            });
+
+
+
+
+            newItem.attr('id', 'field-item-' + itemCount)
+            newItem.find('#option_name_label-_').attr('id', 'option_name_label_' + itemCount);
+            newItem.find('#option_name_').attr('name', 'option_name_' + itemCount);
+            newItem.find('#option_name_').attr('id', 'option_name_' + itemCount);
+
+            newItem.find('#option_title_label_').attr('id', 'option_title_label_' + itemCount);
+            newItem.find('#option_title_').attr('name', 'option_title_' + itemCount);
+            newItem.find('#option_title_').attr('id', 'option_title_' + itemCount);
+
+            newItem.find('#option_delete').attr('name', 'option_delete_' + itemCount);
+
+            newItem.append('<br /><br />');
+            jQuery('#createdOptions').append(newItem);
+
+
+            var count = jQuery('#entryCount').attr('value');
+
+            jQuery('#entryCount').attr('value', itemCount);
+            newItem.attr('id', '');
+
+            jQuery('#pattern-field').find('#option_name_').attr('value', '');
+            jQuery('#pattern-field').find('#option_title_').attr('value', '');
+
+
+        });
+
+    });
+</script>
