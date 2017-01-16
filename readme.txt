@@ -1,4 +1,4 @@
-=== Better Font Awesome ===
+=== Wimm Core ===
 Contributors: loicwimm
 Tags: wimm, webismymind, toolbox
 Donate link: http://webismymind.be
