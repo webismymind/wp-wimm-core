@@ -5,7 +5,7 @@
  * Plugin Name: Wimm Core
  * Plugin URI: http://webismymind.be
  * Description: Main Wimm Plugin
- * Version: 1.0
+ * Version: 1.0.2
  * Author: Webismymind
  * Author URI: http://webismymind.be
  */
@@ -59,5 +59,3 @@ function github_plugin_updater_test_init()
 
 
 }
-
-
