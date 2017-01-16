@@ -8,6 +8,7 @@
  * Version: 1.0.2
  * Author: Webismymind
  * Author URI: http://webismymind.be
+ * GitHub Plugin URI: https://github.com/webismymind/wp-wimm-core
  */
 use Wimm\Application;
 
