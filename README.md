@@ -1,4 +1,3 @@
 # wp-wimm-core
 
-~Current Version:1.0.2~
-
+~Current Version:1.0.3~
