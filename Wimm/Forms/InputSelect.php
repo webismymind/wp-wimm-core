@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Boulot
- * Date: 14/08/14
- * Time: 15:59
- */
 
 namespace Wimm\Forms;
 

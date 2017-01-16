@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Boulot
- * Date: 21/08/14
- * Time: 12:29
- */
 
 namespace Wimm\Widgets;
 

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Boulot
- * Date: 18/08/14
- * Time: 15:20
- */
 
 namespace Wimm\Core;
 
